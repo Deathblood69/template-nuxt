@@ -7,14 +7,34 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "vitest:run": "vitest --coverage",
+    "vitest:open": "vitest --coverage --ui",
+    "cypress:run": "cypress run --browser edge",
+    "cypress:open": "cypress open --e2e --browser edge"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "nuxt": "^3.10.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "prettier": "^3.2.5"
+    "@cypress/code-coverage": "^3.12.20",
+    "@nuxt/devtools": "^1.0.8",
+    "@nuxt/test-utils": "^3.11.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@testing-library/cypress": "^10.0.1",
+    "@types/node": "^20.11.16",
+    "@vitest/coverage-v8": "^1.2.2",
+    "@vitest/ui": "^1.2.2",
+    "@vue/test-utils": "^2.4.4",
+    "cypress": "^13.6.4",
+    "dotenv": "^16.4.1",
+    "happy-dom": "^13.3.8",
+    "pinia": "^2.1.7",
+    "prettier": "^3.2.5",
+    "vite-plugin-vuetify": "^2.0.1",
+    "vue-tsc": "^1.8.27"
   }
 }

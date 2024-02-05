@@ -1,17 +1,15 @@
 <script lang="ts" setup>
-/**  PROPS  **/
+  /**  PROPS  **/
 
-/**  EMITS  **/
+  /**  EMITS  **/
 
-/**  REFS  **/
+  /**  REFS  **/
 
-/**  COMPUTED   **/
+  /**  COMPUTED   **/
 
-/**  LIFECYCLE  **/
+  /**  LIFECYCLE  **/
 
-/**  METHODS  **/
+  /**  METHODS  **/
 </script>
 
-<template>
-  <NuxtWelcome />
-</template>
+<template>Index</template>
