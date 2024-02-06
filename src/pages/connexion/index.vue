@@ -19,6 +19,7 @@
   <VBtn
     color="primary"
     @click="handleConnect"
-    >Connexion
+  >
+    Connexion
   </VBtn>
 </template>

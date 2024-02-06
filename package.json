@@ -11,7 +11,9 @@
     "vitest:run": "vitest --coverage",
     "vitest:open": "vitest --coverage --ui",
     "cypress:run": "cypress run --browser edge",
-    "cypress:open": "cypress open --e2e --browser edge"
+    "cypress:open": "cypress open --e2e --browser edge",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.12.20",
     "@nuxt/devtools": "^1.0.8",
+    "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/test-utils": "^3.11.0",
     "@pinia/nuxt": "^0.5.1",
     "@testing-library/cypress": "^10.0.1",
@@ -31,6 +34,7 @@
     "@vue/test-utils": "^2.4.4",
     "cypress": "^13.6.4",
     "dotenv": "^16.4.1",
+    "eslint": "^8.56.0",
     "happy-dom": "^13.3.8",
     "pinia": "^2.1.7",
     "prettier": "^3.2.5",

@@ -22,7 +22,9 @@
     fluid
   >
     <VCard class="pa-5 rounded rounded-md">
-      <VCardTitle class="titre center"><h2>Erreur</h2></VCardTitle>
+      <VCardTitle class="titre center">
+        <h2>Erreur</h2>
+      </VCardTitle>
       <VCardText class="center">
         <p>Une erreur est survenue lors du chargement de la page.</p>
       </VCardText>

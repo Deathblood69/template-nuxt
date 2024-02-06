@@ -1,4 +1,4 @@
-<script lang="ts" setup xmlns="http://www.w3.org/1999/html">
+<script lang="ts" setup>
   import type {ToolbarButton} from '~/types/toolbarButton'
 
   type Emits = {

@@ -57,10 +57,9 @@
     <VLayout class="flex flex-column">
       <AppBar
         class="bg-primary"
-        @menu="handleMenu"
         :items="actions"
-      >
-      </AppBar>
+        @menu="handleMenu"
+      />
       <VNavigationDrawer :model-value="openMenu">
         <AppList
           :items="liens"
