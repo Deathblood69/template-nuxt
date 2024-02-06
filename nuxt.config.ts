@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     public: {
       API_BASE: process.env.API_BASE,
       NUXT_BASE_URL: process.env.NUXT_BASE_URL,
+      AUTHOR: 'Romain DIASPARRA',
     },
   },
   srcDir: 'src/',

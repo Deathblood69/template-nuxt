@@ -12,6 +12,4 @@
   /**  METHODS  **/
 </script>
 
-<template>
-  <NuxtWelcome />
-</template>
+<template>Index</template>
