@@ -1,0 +1,111 @@
+# Workflow d'exemple pour la construction et le déploiement d'un site Nuxt sur GitHub Pages
+#
+# Pour commencer avec Nuxt, voir : https://nuxtjs.org/docs/get-started/installation
+#
+name: Pull Request
+
+on:
+  # S'exécute sur les push ciblant la branche par défaut
+  pull_request:
+    branches: [ '*' ]
+
+  # Permet d'exécuter ce workflow manuellement depuis l'onglet Actions
+  workflow_dispatch:
+
+env:
+  # Version de Node
+  NODE_VERSION: 21
+
+# Autorise un seul déploiement concurrent, en sautant les exécutions en file d'attente entre l'exécution en cours et la dernière en file d'attente.
+# Cependant, NE PAS annuler les exécutions en cours, car nous voulons permettre à ces déploiements de production de se terminer.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
+jobs:
+  # === TESTS E2E === #
+  cypress:
+    # Utilisation d'une image Ubuntu
+    runs-on: ubuntu-latest
+    # Etapes du workflow
+    steps:
+      # Récupération du code de la branche
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      # Lancement du job Cypress
+      - name: 'Cypress run'
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
+          browser: edge
+
+  # === TESTS UNITAIRES === #
+  vitest:
+    # Utilisation d'une image Ubuntu
+    runs-on: ubuntu-latest
+    # Permissions du workflow
+    permissions:
+      # Permet de récupérer le code
+      contents: read
+      # Required to put a comment into the pull-request
+      pull-requests: write
+
+    steps:
+      # Récupération du code de la branche
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      # Installe node
+      - name: 'Install Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # Installe les packages
+      - name: 'Install Deps'
+        run: npm install
+
+      # Execute les tests unitaires
+      - name: 'Test'
+        run: npx vitest --coverage.enabled true
+
+      # Affiche les résultats
+      - name: 'Report Coverage'
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
+
+  # === BUILD DE L'APPLICATION === #
+  build:
+    # Jobs requis pour le workflow
+    needs: [ 'vitest', 'cypress' ]
+    # Utilisation d'une image Ubuntu
+    runs-on: ubuntu-latest
+    # Etapes du workflow
+    steps:
+      # Récupération du code de la branche
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      # Définit les symlinks de node
+      - name: 'Checkout'
+        run: corepack enable
+
+      # Installe node
+      - name: 'Install Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # Installe les packages
+      - name: 'Install Deps'
+        run: npm install
+
+      # Build l'application
+      - name: 'Build'
+        run: npm run build
+
+
+
+

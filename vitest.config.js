@@ -14,7 +14,15 @@ export default defineVitestConfig({
         '**/constants/**/*',
         '**/app.vue',
       ],
+      reportOnFailure: true,
+      reporter: ['text', 'json-summary', 'json'],
       reportsDirectory: '../coverage',
+      thresholds: {
+        lines: 80,
+        branches: 80,
+        functions: 80,
+        statements: 80,
+      },
     },
   },
 })
