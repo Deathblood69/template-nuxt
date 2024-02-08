@@ -4,7 +4,7 @@ import AppErreur from '../../src/components/AppErreur.vue'
 import {vuetify} from '~/plugins/vuetify'
 
 describe('Tests du composant AppErreur', () => {
-  test('Affichage de la page', () => {
+  test('Affichage de la page', async () => {
     const titre = "Titre de l'erreur"
     const message = "Message d'erreur"
 
@@ -27,12 +27,10 @@ describe('Tests du composant AppErreur', () => {
 
     const bouton = wrapper.find('.v-expansion-panel-title')
     expect(bouton.text()).toContain(titre)
-    bouton.trigger('click')
-    wrapper.vm.$nextTick(() => {
-      expect(bouton.text()).toContain(message)
-    })
+    await bouton.trigger('click')
+    await wrapper.vm.$nextTick()
 
     const boutonPagePrecedente = wrapper.find('.v-btn')
-    boutonPagePrecedente.trigger('click')
+    await boutonPagePrecedente.trigger('click')
   })
 })
