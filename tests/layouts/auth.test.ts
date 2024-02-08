@@ -1,17 +1,15 @@
 import {describe, expect, test} from 'vitest'
 import {mount} from '@vue/test-utils'
-import index from '../../src/pages/index.vue'
+import layout from '../../src/layouts/auth.vue'
 import {vuetify} from '~/plugins/vuetify'
 
-describe('Tests de la page index global', () => {
+describe('Tests de la page de layout par défaut', () => {
   test('Affichage de la page', () => {
-    const wrapper = mount(index, {
+    const wrapper = mount(layout, {
       global: {
         plugins: [vuetify],
       },
     })
     expect(wrapper).toBeDefined()
-
-    expect(wrapper.text()).toBe('Index')
   })
 })

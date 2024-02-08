@@ -1,9 +1,9 @@
 import {describe, expect, test} from 'vitest'
 import {mount} from '@vue/test-utils'
-import index from '../../src/pages/index.vue'
+import index from '../../src/app.vue'
 import {vuetify} from '~/plugins/vuetify'
 
-describe('Tests de la page index global', () => {
+describe("Tests de la page d'erreur", () => {
   test('Affichage de la page', () => {
     const wrapper = mount(index, {
       global: {
@@ -11,7 +11,5 @@ describe('Tests de la page index global', () => {
       },
     })
     expect(wrapper).toBeDefined()
-
-    expect(wrapper.text()).toBe('Index')
   })
 })

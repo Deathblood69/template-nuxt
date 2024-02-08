@@ -12,10 +12,10 @@ export default defineVitestConfig({
         ...configDefaults.coverage.exclude,
         '**/types/**/*',
         '**/constants/**/*',
-        '**/app.vue',
+        // '**/app.vue',
       ],
       reportOnFailure: true,
-      reporter: ['text', 'json-summary', 'json'],
+      reporter: ['text', 'json-summary', 'json', 'html'],
       reportsDirectory: '../coverage',
       thresholds: {
         lines: 80,
