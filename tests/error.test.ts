@@ -4,7 +4,7 @@ import index from '../../src/error.vue'
 import {vuetify} from '~/plugins/vuetify'
 
 describe("Tests de la page d'erreur", () => {
-  test('Affichage de la page', () => {
+  test('Affichage de la page', async () => {
     const message = "Message d'erreur"
     const wrapper = mount(index, {
       props: {
@@ -24,9 +24,9 @@ describe("Tests de la page d'erreur", () => {
     )
     const bouton = wrapper.find('button')
     expect(bouton.text()).toContain("Détails de l'erreur")
-    bouton.trigger('click')
-    wrapper.vm.$nextTick(() => {
-      expect(bouton.text()).toContain(message)
-    })
+    await bouton.trigger('click')
+
+    await wrapper.vm.$nextTick()
+    expect(wrapper.text()).toContain(message)
   })
 })

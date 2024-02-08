@@ -28,7 +28,10 @@ describe('Tests du composant AppErreur', () => {
     const bouton = wrapper.find('.v-expansion-panel-title')
     expect(bouton.text()).toContain(titre)
     await bouton.trigger('click')
+
     await wrapper.vm.$nextTick()
+
+    expect(wrapper.text()).toContain(message)
 
     const boutonPagePrecedente = wrapper.find('.v-btn')
     await boutonPagePrecedente.trigger('click')
